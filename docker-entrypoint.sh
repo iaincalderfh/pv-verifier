@@ -1,11 +1,18 @@
 #!/bin/bash
 
 trap finish TERM INT
-
+STORAGE_TEST_FOLDER="storage_tests"
 function finish {
   echo "Exiting with code 0"
   exit 0
 }
+
+if [ ! -f "$STORAGE_PATH/$STORAGE_TEST_FOLDER" ]; then
+  echo "Creating folder for storage test $STORAGE_PATH/$STORAGE_TEST_FOLDER"
+  mkdir -p "$STORAGE_PATH/$STORAGE_TEST_FOLDER"
+fi
+
+STORAGE_PATH="$STORAGE_PATH/$STORAGE_TEST_FOLDER"
 
 if [ "$(ls -A $STORAGE_PATH)" ]; then
   # STORAGE_PATH is not empty, we expect to find it contains $TEST_FILE_NAME
