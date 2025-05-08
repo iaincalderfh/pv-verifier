@@ -3,9 +3,9 @@ name: Push to Main
 on:
   workflow_dispatch:
     inputs:
-      connStr:
-        description: 'Connection string for the database'
-        default: postgres://metabase:$$(DB_PASSWORD)@metabase-db/metabase?search_path=metabase&sslmode=disable
+      someValue:
+        description: 'Test value'
+        default: metabase:$$(XY_NAME)@somewhere
   push:
     branches:
       - main
@@ -15,6 +15,6 @@ jobs:
     name: Test var substitution
     runs-on: ubuntu-latest
     steps:
-      - name: Echo the connStr
+      - name: Echo the value
         run: |
-          echo "Connection string: ${{ inputs.connStr }}"
+          echo "Value: ${{ inputs.someValue }}"
