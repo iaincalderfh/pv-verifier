@@ -11,4 +11,4 @@ jobs:
     name: Test var substitution
     uses: ./.github/workflows/_echo-value.yaml
     with:
-      thing-to-echo: --set=metabase.env.xUrl=abc://metabase:$$(SOMETHING)@metabase-db/metabase?search_path=metabase&sslmode=disable
+      thing-to-echo: --set=metabase.env.xUrl=metabase:$$(SOMETHING)@metabase-db/metabase?search_path=metabase&sslmode=disable
