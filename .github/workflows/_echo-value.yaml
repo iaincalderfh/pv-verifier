@@ -1,0 +1,19 @@
+---
+name: Echo value
+on:
+  workflow_call:
+    inputs:
+      thing-to-echo:
+        description: |
+          The thing to echo
+        type: string
+        required: true
+
+jobs:
+  echo:
+    name: Echo the value
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo the value
+        run: |
+          echo 'Value: ${{ inputs.thing-to-echo }}'

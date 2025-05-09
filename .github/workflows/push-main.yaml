@@ -2,19 +2,13 @@
 name: Push to Main
 on:
   workflow_dispatch:
-    inputs:
-      someValue:
-        description: 'Test value'
-        default: metabase:$$(XY_NAME)@somewhere
   push:
     branches:
       - main
 
 jobs:
-  test:
+  echo:
     name: Test var substitution
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo the value
-        run: |
-          echo "Value: ${{ inputs.someValue }}"
+    uses: ./.github/workflows/_echo-value.yaml
+    with:
+      thing-to-echo: --set=metabase.dbMigrations.env.dbUrl=postgres://metabase:$$(DB_PASSWORD)@metabase-db/metabase?search_path=metabase&sslmode=disable
