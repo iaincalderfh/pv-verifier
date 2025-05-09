@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   echo:
     name: Test var substitution
     uses: ./.github/workflows/_echo-value.yaml
     with:
-      thing-to-echo: --set=metabase.dbMigrations.env.dbUrl=postgres://metabase:$$(DB_PASSWORD)@metabase-db/metabase?search_path=metabase&sslmode=disable
+      thing-to-echo: --set=metabase.env.xUrl=abc://metabase:$$(SOMETHING)@metabase-db/metabase?search_path=metabase&sslmode=disable
